@@ -88,6 +88,11 @@ describe("Movie PUT route", () => {
       console.log(get.body);
       expect(deleteMovie.status).toBe(200);
     });
+    test("deletion report", async () => {
+      const deleteMovie = await request.delete("/movies/1");
+      console.log(deleteMovie.text);
+      expect(deleteMovie.text).toBe("Deletion failed");
+    });
   });
 });
 
@@ -163,6 +168,11 @@ describe("Cast PUT route", () => {
       console.log(get.body);
       expect(deleteCast.status).toBe(200);
     });
+    test("deletion report", async () => {
+      const deleteCast = await request.delete("/cast/1");
+      console.log(deleteCast.text);
+      expect(deleteCast.text).toBe("Deletion failed");
+    });
   });
 });
 
@@ -237,6 +247,11 @@ describe("Crew PUT route", () => {
       console.log(deleteCrew.status);
       console.log(get.body);
       expect(deleteCrew.status).toBe(200);
+    });
+    test("deletion report", async () => {
+      const deleteCrew = await request.delete("/crew/1");
+      console.log(deleteCrew.text);
+      expect(deleteCrew.text).toBe("Deletion failed");
     });
   });
 });
