@@ -1,4 +1,4 @@
-const { sequelize, DataTypes, Model } = require("../db/db");
+const { sequelize, DataTypes, Model } = require("../../db/db");
 const { Cast } = require("./cast");
 const { Crew } = require("./crew");
 
@@ -24,4 +24,7 @@ Crew.belongsTo(Movie, { foreignKey: "movie_id" });
 
 module.exports = {
   Movie,
+  Cast,
+  Crew,
+  sequelize,
 };

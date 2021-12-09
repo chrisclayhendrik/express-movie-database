@@ -1,8 +1,8 @@
 const express = require("express");
 const path = require("path");
-const { Movie } = require("./models/movie");
-const { Cast } = require("./models/cast");
-const { Crew } = require("./models/crew");
+const { Movie } = require("../src/models/movie");
+const { Cast } = require("../src/models/cast");
+const { Crew } = require("../src/models/crew");
 
 const app = express();
 const port = 3000;
@@ -112,3 +112,5 @@ app.delete("/crew/:id", async (req, res) => {
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
+
+module.exports = app;

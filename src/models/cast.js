@@ -1,4 +1,4 @@
-const { sequelize, DataTypes, Model } = require("../db/db");
+const { sequelize, DataTypes, Model } = require("../../db/db");
 
 class Cast extends Model {}
 Cast.init(

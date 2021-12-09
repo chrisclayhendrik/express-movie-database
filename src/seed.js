@@ -1,72 +1,79 @@
 const { sequelize } = require("../db/db");
 const { Movie } = require("./models/movie");
-const { Cast } = require("./models/cast");
-const { Crew } = require("./models/crew");
+const { Cast } = require("./models/movie");
+const { Crew } = require("./models/movie");
 
 const seedMovie = [
   {
     name: "AppleBees",
-    location: "Texas",
-    cuisine: "FastFood",
+    genre: "Texas",
+    yearReleased: "FastFood",
   },
   {
-    name: "LittleSheep",
-    location: "Dallas",
-    cuisine: "Hotpot",
+    name: "AppleBees",
+    genre: "Texas",
+    yearReleased: "FastFood",
   },
   {
-    name: "Spice Grill",
-    location: "Houston",
-    cuisine: "Indian",
+    name: "AppleBees",
+    genre: "Texas",
+    yearReleased: "FastFood",
   },
   {
-    name: "burgetking",
-    location: "Dallas",
-    cuisine: "Hotpot",
+    name: "AppleBees",
+    genre: "Texas",
+    yearReleased: "FastFood",
   },
   {
-    name: "MCDS",
-    location: "Dallas",
-    cuisine: "Hotpot",
+    name: "AppleBees",
+    genre: "Texas",
+    yearReleased: "FastFood",
   },
 ];
 
 const seedCast = [
   {
-    title: "Breakfast",
-    RestaurantId: 1,
+    name: "Breakfast",
+    role: 1,
   },
   {
-    title: "Lunch",
-    RestaurantId: 2,
+    name: "Breakfast",
+    role: 1,
   },
   {
-    title: "Dinner",
-    RestaurantId: 3,
+    name: "Breakfast",
+    role: 1,
+  },
+  {
+    name: "Breakfast",
+    role: 1,
+  },
+  {
+    name: "Breakfast",
+    role: 1,
   },
 ];
 
 const seedCrew = [
   {
     name: "bhindi masala",
-    image: "someimage.jpg",
-    price: 9.5,
-    vegetarian: true,
-    MenuId: 3,
+    jobTitle: "someimage.jpg",
   },
   {
-    name: "egusi soup",
-    image: "someimage.jpg",
-    price: 10.5,
-    vegetarian: false,
-    MenuId: 2,
+    name: "bhindi masala",
+    jobTitle: "someimage.jpg",
   },
   {
-    name: "hamburger",
-    image: "someimage.jpg",
-    price: 6.5,
-    vegetarian: false,
-    MenuId: 1,
+    name: "bhindi masala",
+    jobTitle: "someimage.jpg",
+  },
+  {
+    name: "bhindi masala",
+    jobTitle: "someimage.jpg",
+  },
+  {
+    name: "bhindi masala",
+    jobTitle: "someimage.jpg",
   },
 ];
 
@@ -79,7 +86,7 @@ const seed = async () => {
     console.log("Seeding success!");
     sequelize.close();
   } catch (error) {
-    console.log("SOMETHING WENT WRONG WITH THE SEEDING: ", error);
+    console.log("Seeding Error!", error);
   }
 };
 
@@ -88,6 +95,7 @@ seed()
     console.log("Seeding success!");
   })
   .catch((err) => {
-    console.error("Oh noes! Something went wrong!");
+    console.error("Seeding Error!");
     console.error(err);
   });
+
