@@ -5,7 +5,7 @@ Cast.init(
   {
     name: DataTypes.STRING,
     role: DataTypes.STRING,
-    movieId: DataTypes.INTEGER,
+    movie_id: DataTypes.INTEGER,
   },
   {
     sequelize,

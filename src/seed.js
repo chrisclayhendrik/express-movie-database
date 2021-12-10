@@ -94,7 +94,9 @@ const seed = async () => {
     await Cast.bulkCreate(seedCast, { validate: true });
     await Crew.bulkCreate(seedCrew, { validate: true });
     console.log("Seeding success!");
+    await sequelize.sync({ force: true });
     sequelize.close();
+
   } catch (error) {
     console.log("Seeding Error!", error);
   }
