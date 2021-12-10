@@ -24,7 +24,7 @@ describe("Movie GET route", () => {
 });
 
 describe("Movie GET route by id", () => {
-  app.get("/movies:id", async (request, response) => {});
+  app.get("/movies:movie_id", async (request, response) => {});
   test("should return 200", async () => {
     const res = await request.get("/movies/1");
     console.log(res.status);
@@ -51,10 +51,10 @@ describe("Movie POST route", () => {
 });
 
 describe("Movie PUT route", () => {
-  app.put("/movies:id", async (request, response) => {
+  app.put("/movies:movie_id", async (request, response) => {
     const movie = request.body;
     let updatedMovie = await Movie.update(movie, {
-      where: { id: request.params.id },
+      where: { movie_id: request.params.id },
     });
     response.send("Updated!");
   });
@@ -71,9 +71,9 @@ describe("Movie PUT route", () => {
   });
 
   describe("Movie DELETE route", () => {
-    app.delete("/movies:id", async (request, response) => {
+    app.delete("/movies:movie_id", async (request, response) => {
       const deletedMovie = await Movie.destroy({
-        where: { id: request.params.id },
+        where: { movie_id: request.params.id },
       });
       let movieDeleteReport = "Deletion failed";
       if (deletedMovie) {

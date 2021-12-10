@@ -32,4 +32,32 @@ describe("Movie model", () => {
     });
     expect(movie.yearReleased).toBe(2021);
   });
+  test("Cast belongs to movie", () => {
+    const movie = Movie.create({
+      id: 1,
+      name: "Test Movie",
+      genre: "test genre",
+      yearReleased: 2021,
+    });
+    const cast = Cast.create({
+      name: "Test Cast",
+      role: "Test Role",
+      movieId: movie.id,
+    });
+    expect(cast.movieId).toEqual(movie.id);
+  });
+  test("Crew belongs to movie", () => {
+    const movie = Movie.create({
+      id: 1,
+      name: "Test Movie",
+      genre: "test genre",
+      yearReleased: 2021,
+    });
+    const crew = Crew.create({
+      name: "Test Crew",
+      jobTitle: "Test Job",
+      movieId: movie.id,
+    });
+    expect(crew.movieId).toEqual(movie.id);
+  });
 });

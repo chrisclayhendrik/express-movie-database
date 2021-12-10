@@ -5,75 +5,85 @@ const { Crew } = require("./models/movie");
 
 const seedMovie = [
   {
-    name: "AppleBees",
-    genre: "Texas",
-    yearReleased: "FastFood",
+    name: "The Matrix",
+    genre: "Science Fiction",
+    yearReleased: 1999,
   },
   {
-    name: "AppleBees",
-    genre: "Texas",
-    yearReleased: "FastFood",
+    name: "Oblivion",
+    genre: "Science Fiction",
+    yearReleased: 2013,
   },
   {
-    name: "AppleBees",
-    genre: "Texas",
-    yearReleased: "FastFood",
+    name: "Dune",
+    genre: "Science Fiction",
+    yearReleased: 2021,
   },
   {
-    name: "AppleBees",
-    genre: "Texas",
-    yearReleased: "FastFood",
+    name: "Johnny Mnemonic",
+    genre: "Science Fiction",
+    yearReleased: 1995,
   },
   {
-    name: "AppleBees",
-    genre: "Texas",
-    yearReleased: "FastFood",
+    name: "Starship Troopers",
+    genre: "Science Fiction",
+    yearReleased: 1997,
   },
 ];
 
 const seedCast = [
   {
-    name: "Breakfast",
-    role: 1,
+    name: "Keanu Reeves",
+    role: "Neo",
+    movie_id: 1,
   },
   {
-    name: "Breakfast",
-    role: 1,
+    name: "Tom Cruise",
+    role: "Jack Harper",
+    movie_id: 2,
   },
   {
-    name: "Breakfast",
-    role: 1,
+    name: "Timothee Chalamet",
+    role: "Paul Atreides",
+    movie_id: 3,
   },
   {
-    name: "Breakfast",
-    role: 1,
+    name: "Henry Rollins",
+    role: "Spider",
+    movie_id: 4,
   },
   {
-    name: "Breakfast",
-    role: 1,
+    name: "Casper van Dien",
+    role: "Johnny Rico",
+    movie_id: 5,
   },
 ];
 
 const seedCrew = [
   {
-    name: "bhindi masala",
-    jobTitle: "someimage.jpg",
+    name: "Lana Wachowski",
+    jobTitle: "Director",
+    movie_id: 1,
   },
   {
-    name: "bhindi masala",
-    jobTitle: "someimage.jpg",
+    name: "Joseph Kosinski",
+    jobTitle: "Director",
+    movie_id: 2,
   },
   {
-    name: "bhindi masala",
-    jobTitle: "someimage.jpg",
+    name: "Denis Villaneuve",
+    jobTitle: "Director",
+    movie_id: 3,
   },
   {
-    name: "bhindi masala",
-    jobTitle: "someimage.jpg",
+    name: "Joseph Longo",
+    jobTitle: "Director",
+    movie_id: 4,
   },
   {
-    name: "bhindi masala",
-    jobTitle: "someimage.jpg",
+    name: "Paul Verhoeven",
+    jobTitle: "Director",
+    movie_id: 5,
   },
 ];
 
@@ -98,4 +108,3 @@ seed()
     console.error("Seeding Error!");
     console.error(err);
   });
-
