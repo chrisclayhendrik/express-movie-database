@@ -110,8 +110,3 @@ seed()
     console.error("Seeding Error!");
     console.error(err);
   });
-<<<<<<< HEAD
-
-  
-=======
->>>>>>> main
