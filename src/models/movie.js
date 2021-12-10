@@ -16,11 +16,11 @@ Movie.init(
   }
 );
 
-Movie.hasMany(Cast, { as: "cast", foreignKey: "movie_id" });
-Cast.belongsTo(Movie, { foreignKey: "movie_id" });
+Movie.hasMany(Cast, { as: "cast", foreignKey: "movieId" });
+Cast.belongsTo(Movie, { foreignKey: "movieId" });
 
-Movie.hasMany(Crew, { as: "crew", foreignKey: "movie_id" });
-Crew.belongsTo(Movie, { foreignKey: "movie_id" });
+Movie.hasMany(Crew, { as: "crew", foreignKey: "movieId" });
+Crew.belongsTo(Movie, { foreignKey: "movieId" });
 
 module.exports = {
   Movie,

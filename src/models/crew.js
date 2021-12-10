@@ -5,7 +5,7 @@ Crew.init(
   {
     name: DataTypes.STRING,
     jobTitle: DataTypes.STRING,
-    movie_id: DataTypes.INTEGER,
+    movieId: DataTypes.INTEGER,
   },
   {
     sequelize,
