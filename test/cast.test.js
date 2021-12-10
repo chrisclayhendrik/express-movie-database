@@ -20,4 +20,12 @@ describe("Cast model", () => {
     });
     expect(cast.role).toBe("test role");
   });
+  test("Cast has movie_id", () => {
+    const cast = Cast.build({
+      name: "Test cast",
+      role: "test role",
+      movie_id: 1,
+    });
+    expect(cast.movie_id).toBe(1);
+  });
 });
