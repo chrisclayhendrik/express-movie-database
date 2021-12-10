@@ -1,15 +1,14 @@
 const express = require("express");
-const path = require("path");
 const { Movie } = require("../src/models/movie");
 const { Cast } = require("../src/models/cast");
 const { Crew } = require("../src/models/crew");
-const { check, validationResult } = require('express-validator');
+const { check, validationResult } = require("express-validator");
 
 const app = express();
 const port = 3000;
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, "../public")));
+app.use(express.static("../public"));
 
 app.get("/movies", async (req, res) => {
   const allMovies = await Movie.findAll();
@@ -25,6 +24,38 @@ app.post("/movies", async (req, res) => {
   let newMovie = await Movie.create(req.body);
   res.json(newMovie);
 });
+
+app.post(
+  "/movies",
+  [check("name").not().isEmpty().trim().escape()],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+  }
+);
+app.post(
+  "/movies",
+  [check("genre").not().isEmpty().trim().escape()],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+  }
+);
+
+app.post(
+  "/movies",
+  [check("yearReleased").not().isEmpty().trim().escape()],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+  }
+);
 
 app.put("/movies/:id", async (req, res) => {
   let updatedMovie = await Movie.update(req.body, {
@@ -59,6 +90,39 @@ app.post("/cast", async (req, res) => {
   res.json(newCast);
 });
 
+app.post(
+  "/cast",
+  [check("name").not().isEmpty().trim().escape()],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+  }
+);
+
+app.post(
+  "/cast",
+  [check("role").not().isEmpty().trim().escape()],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+  }
+);
+
+app.post(
+  "/cast",
+  [check("movieId").not().isEmpty().trim().escape()],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+  }
+);
+
 app.put("/cast/:id", async (req, res) => {
   let updatedCast = await Cast.update(req.body, {
     where: { id: req.params.id },
@@ -91,6 +155,38 @@ app.post("/crew", async (req, res) => {
   let newCrew = await Crew.create(req.body);
   res.json(newCrew);
 });
+
+app.post(
+  "/crew",
+  [check("name").not().isEmpty().trim().escape()],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+  }
+);
+
+app.post(
+  "/crew",
+  [check("jobTitle").not().isEmpty().trim().escape()],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+  }
+);
+app.post(
+  "/crew",
+  [check("movieId").not().isEmpty().trim().escape()],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+  }
+);
 
 app.put("/crew/:id", async (req, res) => {
   let updatedCrew = await Crew.update(req.body, {

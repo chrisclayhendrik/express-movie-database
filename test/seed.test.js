@@ -1,4 +1,7 @@
 const { sequelize } = require("../db/db");
+const { Movie } = require("../src/models/movie");
+const { Cast } = require("../src/models/cast");
+const { Crew } = require("../src/models/crew");
 
 describe("seedMovie array", () => {
   beforeEach(async () => {
@@ -15,12 +18,14 @@ describe("seedMovie array", () => {
     {
       name: "Tom Cruise",
       role: "Jack Harper",
+      movieId: 1,
     },
   ];
   const seedCrewTest = [
     {
       name: "Joseph Kosinski",
       jobTitle: "Director",
+      movieId: 1,
     },
   ];
 
@@ -56,12 +61,14 @@ describe("seedMovie array", () => {
     expect(seedCastTest).toContainEqual({
       name: "Tom Cruise",
       role: "Jack Harper",
+      movieId: 1,
     });
   });
   test("seedCrewTest contains items in array", () => {
     expect(seedCrewTest).toContainEqual({
       name: "Joseph Kosinski",
       jobTitle: "Director",
+      movieId: 1,
     });
   });
 

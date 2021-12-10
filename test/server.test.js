@@ -4,8 +4,9 @@ const supertest = require("supertest");
 const request = supertest(app);
 const { sequelize } = require("../src/models/movie");
 const { Movie } = require("../src/models/movie");
-const { Cast } = require("../src/models/cast");
-const { Crew } = require("../src/models/crew");
+const { Cast } = require("../src/models/movie");
+const { Crew } = require("../src/models/movie");
+const { check, validationResult } = require("express-validator");
 
 app.use(express.json());
 app.use(express.static("../public"));
@@ -48,6 +49,84 @@ describe("Movie POST route", () => {
     console.log(res.body);
     expect(res.status).toBe(200);
   });
+});
+
+describe("Movie name validation", () => {
+  app.post(
+    "/movies",
+    [check("name").not().isEmpty().trim().escape()],
+    async (req, res) => {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+      test("name should not be empty", () => {
+        expect(errors.array()).toBe([]);
+      });
+      test("should return 400", async () => {
+        const res = await request.post("/movies").send({
+          name: "",
+          genre: "test genre",
+          yearReleased: 1990,
+        });
+        console.log(res.status);
+        console.log(res.body);
+        expect(res.status).toBe(400);
+      });
+    }
+  );
+});
+
+describe("Movie genre validation", () => {
+  app.post(
+    "/movies",
+    [check("genre").not().isEmpty().trim().escape()],
+    async (req, res) => {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+      test("genre should not be empty", () => {
+        expect(errors.array()).toBe([]);
+      });
+      test("should return 400", async () => {
+        const res = await request.post("/movies").send({
+          name: "test movie",
+          genre: "",
+          yearReleased: 1990,
+        });
+        console.log(res.status);
+        console.log(res.body);
+        expect(res.status).toBe(400);
+      });
+    }
+  );
+});
+
+describe("Movie year validation", () => {
+  app.post(
+    "/movies",
+    [check("yearReleased").not().isEmpty().trim().escape()],
+    async (req, res) => {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+      test("yearReleased should not be empty", () => {
+        expect(errors.array()).toBe([]);
+      });
+      test("should return 400", async () => {
+        const res = await request.post("/movies").send({
+          name: "test movie",
+          genre: "test genre",
+          yearReleased: "",
+        });
+        console.log(res.status);
+        console.log(res.body);
+        expect(res.status).toBe(400);
+      });
+    }
+  );
 });
 
 describe("Movie PUT route", () => {
@@ -131,6 +210,82 @@ describe("Cast POST route", () => {
   });
 });
 
+describe("Cast name validation", () => {
+  app.post(
+    "/cast",
+    [check("name").not().isEmpty().trim().escape()],
+    async (req, res) => {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+      test("name should not be empty", () => {
+        expect(errors.array()).toBe([]);
+      });
+      test("should return 400", async () => {
+        const res = await request.post("/cast").send({
+          name: "",
+          role: "test role",
+        });
+        console.log(res.status);
+        console.log(res.body);
+        expect(res.status).toBe(400);
+      });
+    }
+  );
+});
+
+describe("Cast role validation", () => {
+  app.post(
+    "/cast",
+    [check("role").not().isEmpty().trim().escape()],
+    async (req, res) => {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+      test("role should not be empty", () => {
+        expect(errors.array()).toBe([]);
+      });
+      test("should return 400", async () => {
+        const res = await request.post("/cast").send({
+          name: "test movie",
+          role: "",
+        });
+        console.log(res.status);
+        console.log(res.body);
+        expect(res.status).toBe(400);
+      });
+    }
+  );
+});
+
+describe("Cast movieId validation", () => {
+  app.post(
+    "/cast",
+    [check("movieId").not().isEmpty().trim().escape()],
+    async (req, res) => {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+      test("movieId should not be empty", () => {
+        expect(errors.array()).toBe([]);
+      });
+      test("should return 400", async () => {
+        const res = await request.post("/cast").send({
+          name: "test movie",
+          role: "test role",
+          movieId: "",
+        });
+        console.log(res.status);
+        console.log(res.body);
+        expect(res.status).toBe(400);
+      });
+    }
+  );
+});
+
 describe("Cast PUT route", () => {
   app.put("/cast:id", async (request, response) => {
     const cast = request.body;
@@ -209,6 +364,82 @@ describe("Crew POST route", () => {
     console.log(res.body);
     expect(res.status).toBe(200);
   });
+});
+
+describe("Crew name validation", () => {
+  app.post(
+    "/crew",
+    [check("name").not().isEmpty().trim().escape()],
+    async (req, res) => {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+      test("name should not be empty", () => {
+        expect(errors.array()).toBe([]);
+      });
+      test("should return 400", async () => {
+        const res = await request.post("/crew").send({
+          name: "",
+          jobTitle: "test title",
+        });
+        console.log(res.status);
+        console.log(res.body);
+        expect(res.status).toBe(400);
+      });
+    }
+  );
+});
+
+describe("Crew jobTitle validation", () => {
+  app.post(
+    "/crew",
+    [check("jobTitle").not().isEmpty().trim().escape()],
+    async (req, res) => {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+      test("jobTitle should not be empty", () => {
+        expect(errors.array()).toBe([]);
+      });
+      test("should return 400", async () => {
+        const res = await request.post("/crew").send({
+          name: "test crew",
+          jobTitle: "",
+        });
+        console.log(res.status);
+        console.log(res.body);
+        expect(res.status).toBe(400);
+      });
+    }
+  );
+});
+
+describe("Crew movieId validation", () => {
+  app.post(
+    "/crew",
+    [check("movieId").not().isEmpty().trim().escape()],
+    async (req, res) => {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+      test("movieId should not be empty", () => {
+        expect(errors.array()).toBe([]);
+      });
+      test("should return 400", async () => {
+        const res = await request.post("/crew").send({
+          name: "test crew",
+          jobTitle: "test title",
+          movieId: "",
+        });
+        console.log(res.status);
+        console.log(res.body);
+        expect(res.status).toBe(400);
+      });
+    }
+  );
 });
 
 describe("Crew PUT route", () => {
