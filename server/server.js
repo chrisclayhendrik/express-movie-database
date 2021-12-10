@@ -3,7 +3,6 @@ const path = require("path");
 const { Movie } = require("../src/models/movie");
 const { Cast } = require("../src/models/cast");
 const { Crew } = require("../src/models/crew");
-const { check, validationResult } = require('express-validator');
 
 const app = express();
 const port = 3000;
