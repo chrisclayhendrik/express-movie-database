@@ -42,9 +42,9 @@ describe("Movie model", () => {
     const cast = Cast.create({
       name: "Test Cast",
       role: "Test Role",
-      movieId: movie.id,
+      movie_id: movie.id,
     });
-    expect(cast.movieId).toEqual(movie.id);
+    expect(cast.movie_id).toEqual(movie.id);
   });
   test("Crew belongs to movie", () => {
     const movie = Movie.create({
@@ -56,8 +56,8 @@ describe("Movie model", () => {
     const crew = Crew.create({
       name: "Test Crew",
       jobTitle: "Test Job",
-      movieId: movie.id,
+      movie_id: movie.id,
     });
-    expect(crew.movieId).toEqual(movie.id);
+    expect(crew.movie_id).toEqual(movie.id);
   });
 });

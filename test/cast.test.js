@@ -1,7 +1,7 @@
 
    
 const { Cast } = require("../src/models/movie");
-const { sequelize } = require("../src/models/movie");
+const { sequelize } = require("../db/db");
 
 beforeEach(async () => {
   await sequelize.sync({ force: true });
